@@ -12,6 +12,6 @@ fun main() {
     println("请选择模式")
     val s = scanner.nextInt()
     val ctx = CashContext(s)
+    println(ctx.getResult(25.0, 10.0))
 
-    println(ctx.getResult(25.0, 16.0))
 }

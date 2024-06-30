@@ -12,6 +12,6 @@ class CashReturn(private val moneyCondition: Double, private val moneyReturn: Do
         if (moneyCondition > 0 && result >= moneyReturn) {
             result -= floor(result / moneyCondition) * moneyReturn
         }
-        return result
+        return super.acceptCash(result, 1.0)
     }
 }
