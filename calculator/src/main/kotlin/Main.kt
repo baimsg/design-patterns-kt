@@ -8,8 +8,8 @@ import java.security.MessageDigest
  * Create by Baimsg on 2024/6/22
  *
  **/
- fun main() {
-    MixedOperations.calculate(" 2^8 ") {
+fun main() {
+    MixedOperations.calculate(" 2^8 -(10-9)+(100/1)") {
         println(it)
     }
 

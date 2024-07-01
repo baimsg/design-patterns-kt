@@ -1,5 +1,7 @@
 package com.baimsg.com.baimsg.calcuator
 
+import com.baimsg.com.baimsg.calcuator.factory.FactoryAdvanced
+import com.baimsg.com.baimsg.calcuator.factory.FactoryBasic
 import com.baimsg.com.baimsg.calcuator.type.Operand
 import com.baimsg.com.baimsg.calcuator.type.Operator
 import java.util.*
@@ -149,12 +151,16 @@ object MixedOperations {
 
     private fun operation(x: String, y: String, operator: Operator): String {
         val operation = when (operator) {
-            Operator.Add -> Adds()
-            Operator.Subtracts -> Subtracts()
-            Operator.Multiplies -> Multiplies()
-            Operator.Divides -> Divides()
-            Operator.Remainder -> Remainder()
-            Operator.Power -> Power()
+            Operator.Add,
+            Operator.Subtracts,
+            Operator.Multiplies,
+            Operator.Divides -> FactoryBasic.createFactory(
+                operator
+            )
+
+            Operator.Power,
+            Operator.Remainder -> FactoryAdvanced.createFactory(operator)
+
             else -> error("不支持的运算符")
         }
         return "${operation.getResult(x.toDouble(), y.toDouble())}"
